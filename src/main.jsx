@@ -12,6 +12,11 @@ import Register from "./pages/Register";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import CreateTask from "./components/CreateTask";
+import MyTasks from "./components/MyTasks";
+import DashboardProfile from "./components/DashboardProfile";
+import PrivateRoute from "./routes/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +42,28 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <Dashboard></Dashboard>
+          </PrivateRoute>
+        ),
+        children: [
+          {
+            path: "profile",
+            element: <DashboardProfile></DashboardProfile>,
+          },
+          {
+            path: "createTask",
+            element: <CreateTask></CreateTask>,
+          },
+          {
+            path: "myTasks",
+            element: <MyTasks></MyTasks>,
+          },
+        ],
       },
     ],
   },

@@ -46,12 +46,12 @@ const Login = () => {
     logIn(email, password)
       .then(() => {
         notifySuccess();
-        //delay 1second here
-        setTimeout(() => {
-          // Delay for 1 second
-          navigate(location?.state ? location.state : "/");
-        }, 2000); // 1000 milliseconds = 1 second
-        // navigate(location?.state ? location.state : "/");
+        // //delay 1second here
+        // setTimeout(() => {
+        //   // Delay for 1 second
+        //   navigate(location?.state ? location.state : "/");
+        // }, 2000); // 1000 milliseconds = 1 second
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.error(error);

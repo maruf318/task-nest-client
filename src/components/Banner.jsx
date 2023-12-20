@@ -17,7 +17,7 @@ const Banner = () => {
             Task Nest: Elevate productivity! Log in, create tasks, and drag to
             conquer goals
           </p>
-          <Link to={"/dashboard"}>
+          <Link to={"/dashboard/profile"}>
             <button className="btn btn-primary">Lets Explore</button>
           </Link>
         </div>

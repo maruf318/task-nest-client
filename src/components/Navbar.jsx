@@ -1,17 +1,17 @@
 import { Link, NavLink } from "react-router-dom";
 import pic from "../assets/icons8-task-100.png";
 import userIcon from "../assets/icons8-user-96.png";
-// import { useContext } from "react";
-// import { AuthContext } from "../../../providers/AuthProvider";
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Navbar = () => {
-  // const { user, logOut } = useContext(AuthContext);
-  // const handleLogOut = () => {
-  //   logOut()
-  //     .then(() => {})
-  //     .catch((error) => console.log(error));
-  // };
-  const user = false;
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+  // const user = false;
   const navLinks = (
     <>
       <li>
@@ -121,18 +121,10 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               {user && <li>Welcome, {user.displayName}</li>}
-              <li>
-                <Link to={"/dashboard/home"} className="btn btn-sm">
-                  Dashboard
-                </Link>
-              </li>
 
               {user ? (
                 <li>
-                  <button
-                    //  onClick={handleLogOut}
-                    className="btn btn-sm"
-                  >
+                  <button onClick={handleLogOut} className="btn btn-sm">
                     LogOut
                   </button>
                 </li>

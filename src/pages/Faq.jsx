@@ -1,7 +1,9 @@
 const Faq = () => {
   return (
     <div className="max-w-7xl mx-auto min-h-[100vh]">
-      <h2>This is faq page</h2>
+      <h2 className="text-center font-bold text-2xl my-10">
+        Frequent Asked Questions
+      </h2>
       <div className="collapse collapse-arrow bg-base-200">
         <input type="radio" name="my-accordion-2" checked="checked" />
         <div className="collapse-title text-xl font-medium">
@@ -34,6 +36,21 @@ const Faq = () => {
         <div className="collapse-content">
           <p>A user can delete, update and create tasks</p>
         </div>
+      </div>
+      <div className="diff aspect-[16/9] mt-10">
+        <div className="diff-item-1">
+          <div className="bg-primary text-primary-content text-lg lg:text-4xl font-black grid place-content-center">
+            <p>📢For Advertisement</p>
+            <p>Contact: hossainmaruf001@gmail.com</p>
+          </div>
+        </div>
+        <div className="diff-item-2">
+          <div className="bg-base-200 text-lg lg:text-4xl font-black grid place-content-center">
+            <p>📢For Advertisement</p>
+            <p>Contact: hossainmaruf001@gmail.com</p>
+          </div>
+        </div>
+        <div className="diff-resizer"></div>
       </div>
     </div>
   );

@@ -1,7 +1,40 @@
 const Faq = () => {
   return (
-    <div>
+    <div className="max-w-7xl mx-auto min-h-[100vh]">
       <h2>This is faq page</h2>
+      <div className="collapse collapse-arrow bg-base-200">
+        <input type="radio" name="my-accordion-2" checked="checked" />
+        <div className="collapse-title text-xl font-medium">
+          Which methods are available for login?
+        </div>
+        <div className="collapse-content">
+          <p>
+            You can login using Gmail, Github. You can even create a account and
+            use your email and password for login.
+          </p>
+        </div>
+      </div>
+      <div className="collapse collapse-arrow bg-base-200">
+        <input type="radio" name="my-accordion-2" />
+        <div className="collapse-title text-xl font-medium">
+          What kind of tasks I can add?
+        </div>
+        <div className="collapse-content">
+          <p>
+            You can add any kinds of tasks you want. As soon as you post it, the
+            tasks will be added in the to-do list.
+          </p>
+        </div>
+      </div>
+      <div className="collapse collapse-arrow bg-base-200">
+        <input type="radio" name="my-accordion-2" />
+        <div className="collapse-title text-xl font-medium">
+          Can a user delete or update his tasks?
+        </div>
+        <div className="collapse-content">
+          <p>A user can delete, update and create tasks</p>
+        </div>
+      </div>
     </div>
   );
 };

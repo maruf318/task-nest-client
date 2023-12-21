@@ -17,11 +17,13 @@ import CreateTask from "./components/CreateTask";
 import MyTasks from "./components/MyTasks";
 import DashboardProfile from "./components/DashboardProfile";
 import PrivateRoute from "./routes/PrivateRoute";
+import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",

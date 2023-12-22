@@ -71,7 +71,9 @@ const router = createBrowserRouter([
             path: "task/:id",
             element: <UpdateTask></UpdateTask>,
             loader: ({ params }) =>
-              fetch(`http://localhost:5000/task/${params.id}`),
+              fetch(
+                `https://task-nest-server-one.vercel.app/task/${params.id}`
+              ),
           },
         ],
       },

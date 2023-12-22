@@ -74,13 +74,6 @@ const Task = ({ task, index }) => {
           ref={provided.innerRef}
           isDragging={snapshot.isDragging}
         >
-          {/* <div style={{ display: "flex", justifyContent: "start", padding: 2 }}>
-            <span>
-              <small>
-                #{task._id}
-              </small>
-            </span>
-          </div> */}
           <div style={{ justifyContent: "center", padding: 2 }}>
             <span className="font-bold "> Title:</span>
             <TextContent>{task.title}</TextContent>

@@ -1,5 +1,7 @@
 import { Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import { toast } from "react-toastify";
 
 const Container = styled.div`
   border-radius: 10px;
@@ -24,6 +26,7 @@ const TextContent = styled.div``;
 //   justify-content: end;
 //   padding: 2px;
 // `;
+
 function bgcolorChange(props) {
   return props.isDragging
     ? "lightgreen"
@@ -37,6 +40,29 @@ function bgcolorChange(props) {
 }
 
 const Task = ({ task, index }) => {
+  const notifySuccess = () =>
+    toast.success("Deleted Successfully", {
+      position: "top-center",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  const axiosPublic = useAxiosPublic();
+  const handleDelete = (id) => {
+    console.log(id);
+    axiosPublic.delete(`/tasks/${id}`).then((res) => {
+      console.log(res.data);
+
+      if (res.data.deletedCount > 0) {
+        notifySuccess();
+        location.reload();
+      }
+    });
+  };
   return (
     <Draggable draggableId={`${task._id}`} key={task._id} index={index}>
       {(provided, snapshot) => (
@@ -62,7 +88,10 @@ const Task = ({ task, index }) => {
             <TextContent>{task.deadline}</TextContent>
             <span className="font-bold "> Priority:</span>
             <TextContent>{task.priority}</TextContent>
-            <button className="btn btn-sm btn-primary text-white">
+            <button
+              onClick={() => handleDelete(task._id)}
+              className="btn btn-sm btn-primary text-white"
+            >
               Delete
             </button>
           </div>

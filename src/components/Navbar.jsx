@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import pic from "../assets/icons8-task-100.png";
 import userIcon from "../assets/icons8-user-96.png";
 import { useContext } from "react";
@@ -6,9 +6,12 @@ import { AuthContext } from "../providers/AuthProvider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        navigate("/");
+      })
       .catch((error) => console.log(error));
   };
   // const user = false;
@@ -33,7 +36,7 @@ const Navbar = () => {
               ? "font-extrabold dark:text-white border-2 border-y-gray-600"
               : "bg-secondary dark:text-white font-semibold"
           }
-          to={"/dashboard"}
+          to={"/dashboard/profile"}
         >
           Dashboard
         </NavLink>

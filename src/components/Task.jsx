@@ -2,6 +2,7 @@ import { Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   border-radius: 10px;
@@ -63,6 +64,7 @@ const Task = ({ task, index }) => {
       }
     });
   };
+
   return (
     <Draggable draggableId={`${task._id}`} key={task._id} index={index}>
       {(provided, snapshot) => (
@@ -94,6 +96,11 @@ const Task = ({ task, index }) => {
             >
               Delete
             </button>
+            <Link to={`/dashboard/task/${task._id}`}>
+              <button className="btn btn-sm btn-primary text-white">
+                Edit
+              </button>
+            </Link>
           </div>
 
           {provided.placeholder}

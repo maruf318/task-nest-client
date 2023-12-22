@@ -19,6 +19,7 @@ import DashboardProfile from "./components/DashboardProfile";
 import PrivateRoute from "./routes/PrivateRoute";
 import ErrorPage from "./pages/ErrorPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import UpdateTask from "./pages/UpdateTask";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,12 @@ const router = createBrowserRouter([
           {
             path: "myTasks",
             element: <MyTasks></MyTasks>,
+          },
+          {
+            path: "task/:id",
+            element: <UpdateTask></UpdateTask>,
+            loader: ({ params }) =>
+              fetch(`http://localhost:5000/task/${params.id}`),
           },
         ],
       },

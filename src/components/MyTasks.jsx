@@ -2,11 +2,14 @@ import { useContext } from "react";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { AuthContext } from "../providers/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
+// import Board from "./Board";
+import KanbanBoard from "./Board";
 
 const MyTasks = () => {
   const axiosPublic = useAxiosPublic();
   const { user } = useContext(AuthContext);
-  const { data: todoTasks = [] } = useQuery({
+
+  const { data: todoTasks = [], refetch } = useQuery({
     queryKey: ["tasks", user?.email],
     queryFn: async () => {
       const res = await axiosPublic.get(`/tasks?email=${user.email}`);
@@ -14,11 +17,14 @@ const MyTasks = () => {
       return res.data;
     },
   });
-
   console.log(todoTasks);
+
   return (
     <div>
-      <h2>This is my tasks : {todoTasks?.length}</h2>
+      <h2 className="font-bold text-center">
+        You have : {todoTasks?.length} Tasks
+      </h2>
+      <KanbanBoard todoTasks={todoTasks} refetch={refetch} />
       {/* <div className="overflow-x-auto">
         <table className="table">
    
